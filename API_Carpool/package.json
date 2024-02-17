@@ -1,0 +1,38 @@
+{
+  "name": "raging-frogs-battle-against-typescript_carpool",
+  "version": "1.0.0",
+  "description": "carpool API",
+  "main": "server.js",
+  "dependencies": {
+    "axios": "^1.6.2",
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "celebrate": "^15.0.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "joi": "^17.11.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "~6.12.0",
+    "nodemon": "^3.0.3",
+    "pg": "^8.11.3",
+    "sequelize": "^6.35.2",
+    "uuid": "^9.0.1"
+  },
+  "engines": {
+    "node": "18.18.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UPskill-Javascript/Raging-Frogs-Battle-Against-Typescript_Carpool.git"
+  },
+  "author": "Raging Frogs Battle Against Typescript",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UPskill-Javascript/Raging-Frogs-Battle-Against-Typescript_Carpool/issues"
+  },
+  "homepage": "https://github.com/UPskill-Javascript/Raging-Frogs-Battle-Against-Typescript_Carpool#readme"
+}
