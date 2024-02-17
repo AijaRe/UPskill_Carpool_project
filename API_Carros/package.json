@@ -1,0 +1,32 @@
+{
+  "name": "raging-frogs-battle-against-typescript_carros",
+  "version": "1.0.0",
+  "description": "Carros_BE is a Node.js backend application designed to manage information related to car brands and models",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "celebrate": "^15.0.3",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "joi": "^17.11.0",
+    "mongoose": "~6.12.0",
+    "cors": "^2.8.5",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "engines": {
+    "node": "18.18.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UPskill-Javascript/Raging-Frogs-Battle-Against-Typescript_Carros.git"
+  },
+  "author": "Repsa Aija, Dias Bernardo, Calça Filipe, Silva Rui, Silva Tiago",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UPskill-Javascript/Raging-Frogs-Battle-Against-Typescript_Carros/issues"
+  },
+  "homepage": "https://github.com/UPskill-Javascript/Raging-Frogs-Battle-Against-Typescript_Carros#readme"
+}
