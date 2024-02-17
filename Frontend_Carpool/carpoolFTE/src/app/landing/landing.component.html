@@ -1,0 +1,62 @@
+<!-- Container Fluid -->
+<div class="container-fluid mt-5 mb-0 p-0">
+
+  <!-- Main Jumbotron -->
+  <div class="p-0 text-center bg-body-tertiary">
+
+    <!-- Background Image Section -->
+    <div class="p-5 text-center bg-body-tertiary rounded-3 foto-fundo">
+      <h1 class="text-body-emphasis">GetInTheVan</h1>
+      <p class="col-lg-8 mx-auto fs-5 text-muted display-4">
+        Viaja por Portugal sem preocupações e bem acompanhado. Garantimos segurança, diversão e reservas rápidas na nossa plataforma intuitiva. Lembre-se, as boleias mais inesquecíveis não têm preço!
+      </p>
+
+      <!-- Form Section -->
+      <div class="d-inline-flex gap-2 mb-0">
+        <div class="container-lg d-flex justify-content-center">
+          <div class="card p-0 border-3 border-warning rounded-5">
+
+            <!-- Form -->
+            <form class="row row-cols-lg-auto g-3 align-items-center">
+
+              <!-- Dropdown for Ponto de Partida -->
+              <div class="col-12 border-end border-warning">
+                <label class="visually-hidden" for="partidaMunicipio">Partida</label>
+                <select class="form-select rounded-end rounded-5 border-0 mx-1 fs-5 focus-ring focus-ring-warning" id="partidaMunicipio" name="partidaMunicipio" required [(ngModel)]="pesquisaForm.partidaMunicipio">
+                  <option value="" disabled selected>Ponto de partida</option>
+                  <option *ngFor="let municipio of municipiosFreguesias" [value]="municipio.nome">
+                    {{ municipio.nome }}
+                  </option>
+                </select>
+              </div>
+
+              <!-- Dropdown for Ponto de Chegada -->
+              <div class="col-12 border-end border-warning">
+                <label class="visually-hidden" for="destinoMunicipio">Destino</label>
+                <select class="form-select border-0 fs-5 focus-ring focus-ring-warning" id="destinoMunicipio" name="destinoMunicipio" required [(ngModel)]="pesquisaForm.destinoMunicipio">
+                  <option value="" disabled selected>Ponto de chegada</option>
+                  <option *ngFor="let municipio of municipiosFreguesias" [value]="municipio.nome">
+                    {{ municipio.nome }}
+                  </option>
+                </select>
+              </div>
+
+              <!-- Date Input -->
+              <div class="col-12">
+                <label class="visually-hidden" for="data">Data</label>
+                <input type="date" class="form-control border-0 fs-5 focus-ring focus-ring-warning" id="data" name="data" placeholder="Data" required [(ngModel)]="pesquisaForm.data">
+              </div>
+
+              <!-- Submit Button -->
+              <div class="col-12">
+                <button type="submit" class="btn btn-warning rounded-5 fs-5 border-3 border-warning-subtle m-0" (click)="onSubmit()">Pesquisar</button>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

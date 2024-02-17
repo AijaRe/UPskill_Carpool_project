@@ -1,0 +1,88 @@
+<div class="p-3 text-bg-light fixed-top mb-5">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <a routerLink='' class="d-flex align-items-center me-2 mb-2 mb-lg-0 text-dark text-decoration-none fw-bold border border-2 rounded-5">
+        <h4 class="mb-0 mx-2">GetInTheVan</h4>
+      </a>
+
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <div *ngIf="isLoggedIn()">
+          <li><a routerLink="dashboard" class="nav-link px-2 text-dark">Dashboard</a></li>
+        </div>
+
+        <li><a routerLink="todasOfertas" class="nav-link px-2 text-dark">Ofertas de boleia</a></li>
+
+
+      </ul>
+
+      <div class="text-end d-flex align-items-center me-2">
+        <a type="button"  routerLink="criarBoleias" class="d-flex align-items-center fw-semibold text-decoration-none text-dark me-2"><span class="d-flex align-items-center bi bi-plus-circle fw-semibold fs-4 me-2"></span> Publicar uma boleia </a>
+      </div>
+
+      <div class="text-end d-flex align-items-center me-2" *ngIf="isLoggedIn()">
+        <a routerLink="perfil" type="button" class="d-flex align-items-center text-dark text-decoration-none fw-semibold me-2"><span class="d-flex align-items-center bi bi-person-circle fw-semibold fs-4 me-2"></span> O meu perfil </a>
+      </div>
+
+      <div class="text-end d-flex align-items-center me-2"*ngIf="isAdmin()" >
+        <a routerLink="admin-tools" class="d-flex align-items-center text-dark text-decoration-none fw-semibold me-2"><span class="d-flex align-items-center bi bi-wrench-adjustable-circle fw-semibold fs-4 me-2"></span> Admin Tools </a>
+      </div>
+
+
+      <div class="text-end" *ngIf="!isLoggedIn()">
+        <!-- Button trigger modal -->
+        <!-- <button type="button" class="btn btn-warning me-2 rounded-5" (click)="openLoginModal()">Login</button> -->
+        <button type="button" class="btn btn-dark me-2 rounded-5"><a class="text-decoration-none text-light" routerLink="registo"> Registo </a></button>
+      </div>
+
+      <div class="text-end" *ngIf="!isLoggedIn()">
+        <!-- Button trigger modal -->
+        <!-- <button type="button" class="btn btn-warning me-2 rounded-5" (click)="openLoginModal()">Login</button> -->
+        <button type="button" class="btn btn-warning me-2 rounded-5" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+      </div>
+
+      <div class="text-end" *ngIf="isLoggedIn()">
+        <button type="button" class="btn btn-secondary me-2 rounded-5" (click)="logout()">Logout</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-warning">
+        <h1 class="modal-title fs-5" id="loginModalLabel">Bem-vindo de volta</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <app-login (submitted)="login($event)"></app-login>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Registar Modal -->
+<div class="modal fade" id="resgistarModal" tabindex="-1" aria-labelledby="resgistarModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-warning">
+        <h1 class="modal-title fs-5" id="resgistarModalLabel">Bem-vindo de volta</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Inicio Conteudo Modal -->
+        <app-login (submitted)="login($event)"></app-login>
+        <!-- Fim Conteudo Modal -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <footer class="container fixed-bottom d-flex align-items-center justify-content-between">
+  <p>© 2023 Upskill · Raging Frogs Battle Against Typescript </p>
+  <button class="btn btn-warning rounded-5 float-end mb-3"><a href="#" class="text-dark text-decoration-none"><i class="bi bi-arrow-up-circle"></i> Back to top</a></button>
+</footer> -->
+
+<router-outlet></router-outlet>

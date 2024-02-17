@@ -1,0 +1,26 @@
+/* .btn {
+    padding: .55rem 1.5rem .45rem;
+  }
+  .modal {
+    z-index: 1000;
+  }.modal {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  z-index: 1000;
+}
+
+.modal-backdrop {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 0.5 !important;
+  z-index: 999;
+}
+.container1{
+  display: flex;
+}
+.btn-login {
+  position: absolute;
+  right: 0;
+  top:8px;
+} */

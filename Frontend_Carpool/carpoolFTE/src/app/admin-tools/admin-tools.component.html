@@ -1,0 +1,64 @@
+<!-- admin-tools.component.html -->
+<div style="margin-top: 100px;" class="container">
+  <div class="row d-flex align-items-center">
+
+    <!-- Coluna da Esquerda: Imagem -->
+    <div class="col-md-6">
+      <img src="./../../../assets/Pictures/10047.jpg" class="img-fluid" alt="Imagem de Carro">
+    </div>
+
+    <!-- Coluna da Direita: Funcionalidades de Administração -->
+    <div class="col-md-6">
+      <div class="card border-1 m-5">
+        <h5 class="card-header bg-warning p-3">Administração de Carros</h5>
+        <div class="card-body">
+          
+          <!-- Seção de Seleção de Marca e Modelo -->
+          <div class="mb-4">
+            <h6>Selecionar Marca e Modelo</h6>
+            <button (click)="exibirMarcas = true" class="btn btn-warning mb-3">Selecionar Marca</button>
+            <div *ngIf="exibirMarcas">
+              <select [(ngModel)]="marcaSelecionada" (ngModelChange)="pesquisarModelos()" class="form-control form-select rounded-5 mb-3">
+                <option value="">Selecione uma Marca</option>
+                <option *ngFor="let marca of Marcas" [value]="marca.marca">{{ marca.marca }}</option>
+              </select>
+            </div>
+            <div *ngIf="marcaSelecionada">
+              <select [(ngModel)]="modeloSelecionado" (ngModelChange)="modeloSelecionadoChange()" class="form-control form-select rounded-5 mb-3">
+                <option value="">Selecione um Modelo</option>
+                <option *ngFor="let modelo of Modelos" [value]="modelo.modelo">{{ modelo.modelo }}</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Seção de Edição de Carro -->
+          <div *ngIf="modeloSelecionado" class="mb-4">
+            <h6>Editar Carro</h6>
+            <div>
+              <label for="marcaInput">Marca:</label>
+              <input id="marcaInput" [(ngModel)]="marcaParaAtualizar" class="form-control form-control rounded-5 mb-2" name="marca" />
+              <label for="modeloInput">Modelo:</label>
+              <input id="modeloInput" [(ngModel)]="modeloParaAtualizar" class="form-control form-control rounded-5 mb-2" name="modelo" />
+              <button (click)="putCarros()" class="btn btn-warning mb-3">Atualizar Carro</button>
+            </div>
+          </div>
+
+          <!-- Seção de Adição de Novo Carro -->
+          <div class="mb-4">
+            <h6>Adicionar Novo Carro</h6>
+            <button (click)="exibirFormularioNovoCarro = true" class="btn btn-warning mb-3">Adicionar Novo Carro</button>
+            <div *ngIf="exibirFormularioNovoCarro">
+              <label for="novaMarca">Nova Marca:</label>
+              <input id="novaMarca" [(ngModel)]="novaMarca" class="form-control form-control rounded-5 mb-2" name="novaMarca" />
+              <label for="novoModelo">Novo Modelo:</label>
+              <input id="novoModelo" [(ngModel)]="novoModelo" class="form-control form-control rounded-5 mb-2" name="novoModelo" />
+              <button (click)="criarNovoCarro()" class="btn btn-warning mb-3">Criar Carro</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,87 @@
+
+/* form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  } */
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+  }
+ /*  .button-vermelho{
+    background-color: red;;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  } */
+  /* button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  } */
+
+  /* button:hover {
+    background-color: #45a049;
+  } */
+
+ /* Add these styles to your component's CSS file or style section */
+
+/* Estilizaçao do modal */
+.modal {
+    display: none; /* Esconder por defeito */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo com opacidade*/
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Estilo para o conteudo do modal */
+  .terms-modal {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    overflow-y: auto; /* Permitir scroll */
+    max-height: 80vh; /* Limitar altura */
+    position: relative;
+  }
+
+  /* Style for the close button inside the modal */
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+  }
+
+  /* Display do modal */
+  .show {
+    display:flex; /* alterar a posiçao onde surge o modal */
+  }
+
+  .errosValidacao{
+    color:red;
+    margin-top:-10px;
+  }

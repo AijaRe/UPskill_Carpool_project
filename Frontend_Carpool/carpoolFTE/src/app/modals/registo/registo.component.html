@@ -1,0 +1,172 @@
+
+
+<div class="container col-8 mt-5" >
+  <form (ngSubmit)="onSubmit()">
+    <div class="card" style="margin-top: 100px;">
+      <h5 class="card-header bg-warning p-3">Registo</h5>
+      <div class="card-body">
+
+        <div class="form-floating mb-3">
+          <input class="form-control rounded-5" type="text" id="floatingNome" placeholder="Nome" [(ngModel)]="formData.nome" name="nome"  required>
+          <label for="floatingNome">Nome <span class="text-body-secondary">(obrigatório)</span></label>
+          <div *ngIf="errosValidacaoFormulario.nome" class="errosValidacao">{{ errosValidacaoFormulario.nome }}</div>
+        </div>
+
+        <div class="form-floating mb-3">
+          <input class="form-control rounded-5" type="text" id="floatingEmail" placeholder="Email" [(ngModel)]="formData.email" name="email" required>
+          <label for="floatingEmail">Email <span class="text-body-secondary">(obrigatório)</span></label>
+          <div *ngIf="errosValidacaoFormulario.email" class="errosValidacao">{{ errosValidacaoFormulario.email }}
+          </div>
+        </div>
+
+        <div class="form-floating mb-3">
+          <input class="form-control rounded-5" type="text" id="floatingTelefone" placeholder="Telefone" [(ngModel)]="formData.telefone" name="telefone">
+          <label for="floatingTelefone">Telefone</label>
+        </div>
+
+        <div class="form-floating mb-3">
+          <input class="form-control rounded-5" type="password" id="floatingPassword" placeholder="Password" [(ngModel)]="formData.password" name="password" required>
+          <label for="floatingPassword">Password <span class="text-body-secondary">(obrigatório)</span></label>
+          <div *ngIf="errosValidacaoFormulario.password" class="errosValidacao">{{ errosValidacaoFormulario.password }}</div>
+        </div>
+
+        <hr>
+        <div class="d-flex justify-content-between gap-2">
+          <button class="btn btn-dark rounded-5 col-3" type="button" (click)="openTermsAndConditionsModal()"> Termos e condições </button>
+          <button class="btn btn-warning rounded-5 col-5" type="submit">Submeter</button>
+          <button class="btn btn-secondary rounded-5 col-3"><a class="text-decoration-none text-white" routerLink="">Voltar</a></button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+
+<!-- <form (ngSubmit)="onSubmit()" style="margin-top: 50px; margin-bottom: 50px;  background-color: #333333; color: #FFFFFF;">
+
+    <label for="nome">Nome:*</label>
+    <input placeholder="Introduzir nome" type="text" id="nome" [(ngModel)]="formData.nome" name="nome" required>
+    <div *ngIf="errosValidacaoFormulario.nome" class="errosValidacao">{{ errosValidacaoFormulario.nome }}</div>
+
+    <label for="email">Email:*</label>
+    <input placeholder="Introduzir email" id="email" [(ngModel)]="formData.email" name="email" required>
+    <div *ngIf="errosValidacaoFormulario.email" class="errosValidacao">{{ errosValidacaoFormulario.email }}</div>
+
+    <label for="telefone">Telefone:</label>
+    <input placeholder="Introduzir telefone" id="telefone" [(ngModel)]="formData.telefone" name="telefone">
+
+    <label for="password">Password:*</label>
+    <input placeholder="Introduzir password" type="password" id="password" [(ngModel)]="formData.password" name="password" required>
+    <div *ngIf="errosValidacaoFormulario.password" class="errosValidacao">{{ errosValidacaoFormulario.password }}</div>
+
+    <button type="button" (click)="openTermsAndConditionsModal()">Termos e condições</button>
+
+    <button type="submit" style="margin-left: 20px;">Submeter</button>
+    <p style="font-size: 15px; margin-top: 10px;"><b>Campos obrigatórios*</b></p>
+  </form> -->
+
+  <!-- Your terms modal -->
+  <div *ngIf="showTermsModal" class="modal show">
+    <div class="terms-modal">
+       <!-- Body dos termos e condições -->
+       <p><strong>**IDENTIFICAÇÃO DO RESPONSÁVEL PELO TRATAMENTO**</strong><br><br>
+        Empresa: Raging Frogs Battle Against Typescript <br>
+        Sede: Avenida da Boa Viagem nº2, Santo António dos Cavaleiros<br>
+        nif: 123456789<br>
+        Telefone: 912654678<br>
+        E-mail: FrogsWillBeFrogs@frogs.com<br>
+        E-mail Encarregado da Proteção de Dados: TiagoFrogs@Frogs.com
+        <br>
+        <br>
+        <strong>**INFORMAÇÃO E CONSENTIMENTO**</strong>
+        <br>
+        <br>
+
+        A Lei da Proteção de Dados Pessoais (LPDP) e o Regulamento Geral de Proteção de Dados (RGPD) asseguram a proteção das pessoas singulares no que diz respeito ao tratamento de dados pessoais e à livre circulação desses dados.
+
+        Ao aceitar esta Política de Privacidade, o utilizador presta o seu consentimento informado, expresso, livre e inequívoco para que os dados pessoais fornecidos através do site https://www.carpool.pt sejam incluídos num ficheiro da responsabilidade da ViagensDeSopro, cujo tratamento nos termos da LPDP e do RGPD cumpre as medidas de segurança técnicas e organizativas adequadas.
+
+        A ViagensDeSopro mantém uma base de dados com o registo dos seus clientes. Os dados presentes nesta base são unicamente os dados prestados pelos próprios na altura do seu registo, sendo recolhidos e processados automaticamente, nos termos aprovados pela Comissão Nacional de Proteção de Dados, pela ViagensDeSopro, entidade responsável pelo correspondente ficheiro.
+        <br>
+        <br>
+      <strong>  **FINALIDADES DO TRATAMENTO DE DADOS PESSOAIS**</strong>
+        <br>
+        <br>
+        Os dados pessoais que tratamos através desta página serão unicamente utilizados para as seguintes finalidades:
+
+        (i) Própria da atividade vinculada a uma aplicação de boleias;
+
+        (ii) Fornecimento aos intervenientes nos serviços solicitados pelo utilizador para concretização da reserva/serviço contratado pelo Utilizador;
+
+        (iii) Gestão, administração, prestação, ampliação e melhoria dos serviços em que o utilizador decida subscrever-se e registar-se ou utilizar a adequação desses serviços às preferências e gostos dos utilizadores;
+
+        (iv) Verificar cartões de crédito e outros tipos de cartões utilizados no pagamento e indicados pelo próprio Utilizador;
+
+        (v) O estudo da utilização dos serviços por parte dos utilizadores;
+
+        (vi) Verificar, manter e desenvolver sistemas e análises estatísticas;
+
+        (vii) Atividades de publicidade, promoção e prospeção comercial se devidamente autorizado e consentido pelo Utilizador;
+
+        (viii) Enviar formulários de inquéritos aos quais o utilizador não fica obrigado a responder;
+        <br>
+        <br>
+        <strong>**CESSÃO DE DADOS PESSOAIS**</strong>
+        <br>
+       <br>
+       Frogs Battle Against Typescript poderá revelar a informação dos utilizadores a terceiros unicamente com o propósito de completar a reserva solicitada e por razões administrativas nos termos da legislação em vigor para concretização de viagens/serviço para determinados países.
+
+        Qualquer dado recolhido dessa maneira na página web será transmitido, em conformidade com o estabelecido na legislação em matéria de proteção de dados vigente, às entidades envolvidas para contratar os serviços requeridos na medida do absolutamente necessário para a concretização da reserva/serviço pretendido e para cumprimento da legislação dos Países de destino.
+
+        Além disso, o utilizador consentirá expressamente que os dados pessoais possam ser cedidos a:
+
+        (i) Autoridades nacionais e internacionais competentes em matéria de turismo, terrorismo ou delitos que atentem contra os direitos humanos;
+
+        (ii) Qualquer entidade jurídica filial ou participada pela Raging Frogs Battle Against Typescript ou à empresa que tenha prestado o serviço contratado (hotéis, empresa de transporte aquático, terrestre, ferroviário, aéreo, aluguer, etc.), para que os utilizem com a finalidade de uma correta prestação de cada serviço solicitado pelo utilizador.
+
+        O utilizador garante que a informação fornecida é verdadeira, precisa, completa e atualizada, e é responsável por qualquer dano ou perda, direta ou indireta, que possa ser causado como resultado da violação dessa obrigação. No caso de os dados fornecidos pertencerem a um terceiro, o utilizador garante que informou o referido terceiro dos aspetos contidos neste documento e obteve a sua autorização para fornecer os seus dados à ViagensDeSopro para os fins indicados.
+        <br>
+        <br>
+       <strong> **MEDIDAS DE SEGURANÇA**</strong>
+        <br>
+        <br>
+
+        A Raging Frogs Battle Against Typescript declara que implementou e continuará a implementar as medidas de segurança de natureza técnica e organizativa necessárias para garantir a segurança dos dados pessoais fornecidos, visando evitar a sua alteração, perda, tratamento e/ou acesso não autorizado. Isso é realizado tendo em conta o estado atual da tecnologia, a natureza dos dados armazenados e os riscos a que estão expostos.
+
+        Os dados pessoais obtidos durante o registo nos websites são incorporados numa aplicação informática propriedade da Raging Frogs Battle Against Typescript. O acesso à informação em arquivo por parte dos colaboradores da ViagensDeSopro só é possível com a inserção de senhas de acesso, e todo o acesso é registado documentalmente. Qualquer alteração aos dados existentes nos arquivos é possível, ficando registada a data e o código de utilizador responsável pela alteração.
+
+        Os dados pessoais são tratados com o nível de proteção legalmente exigível para garantir a sua segurança, evitando a sua alteração, perda, tratamento ou acesso não autorizado, tendo em conta o estado da tecnologia. O utilizador está ciente e aceita que as medidas de segurança na Internet não são inexpugnáveis.
+
+        A Frogs Battle Against Typescript S.A., ao aceder a qualquer dado pessoal, compromete-se a:
+
+        (i) Armazená-los por intermédio de medidas de segurança, legalmente exigíveis, de natureza técnica e organizacional, que garantam a sua segurança, evitando assim a alteração, perda, tratamento ou acesso não autorizado, em conformidade com o estado da tecnologia em cada momento, a natureza dos dados e os possíveis riscos a que estejam expostos;
+
+        (ii) Utilizar os dados exclusivamente para as finalidades previamente definidas;
+
+        (iii) Certificar-se de que os dados são tratados unicamente pelos trabalhadores cuja intervenção seja necessária para a prestação do serviço, estando os mesmos obrigados ao dever de sigilo e confidencialidade. Existindo a possibilidade de a informação ser revelada a terceiros, estes devem ser obrigados a guardar a devida confidencialidade em conformidade com o previsto neste documento.
+        <br>
+        <br>
+        <strong>**EXERCÍCIO DOS DIREITOS**</strong>
+        <br>
+        <br>
+        De acordo com as disposições da LDPD e do RGPD, o utilizador pode exercer a todo o tempo os seus direitos de acesso, retificação, apagamento, limitação, oposição e portabilidade, através de solicitação por escrito utilizando qualquer dos seguintes meios, incluindo, em qualquer caso, uma cópia de um documento comprovativo da sua identidade e especificando o direito ou direitos que deseja exercer.
+
+        Correio: Avenida da Boa Viagem, nº 2, Santo António dos Cavaleiros, 1900 - 083 Lisboa
+        E-mail: protecaodados@frogs.com
+
+        Além disso, mesmo estando registado no site, o utilizador poderá decidir não receber informação nossa, seja a newsletter ou de outro género, escolhendo a opção apropriada nessa mesma página "dados pessoais".
+        <br>
+        <br>
+      <strong>  **AUTORIDADE DE CONTROLO**</strong>
+        <br>
+        <br>
+        Nos termos legais, o titular dos dados tem o direito de apresentar uma reclamação em matéria de proteção de dados pessoais à autoridade de controlo competente, a Comissão Nacional de Proteção de Dados (CNPD) www.cnpd.pt.
+        <br><br>
+        <strong>Caso não concorde com as condições acima referidas, a ViagensDeSopro, Viagens e Turismo S.A. não poderá contratar consigo, e consequentemente, não poderá aceitar a sua reserva.</strong></p><br><br>
+        <div class="d-flex justify-content-between">
+        <button class="btn btn-warning rounded-5 m-2" type="button" (click)="onAccept()">Aceitar os termos e Condições</button>
+        <button class="btn btn-dark rounded-5 m-2" type="button" (click)="closeTermsModal()">Cancelar</button>
+      </div>
+    </div>
+  </div>

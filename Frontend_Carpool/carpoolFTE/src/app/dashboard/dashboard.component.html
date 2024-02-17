@@ -1,0 +1,324 @@
+<div class="container mt-5 d-flex justify-content-between">
+  <div class="d-flex justify-content-center mt-5">
+
+    <div class="container text-center mt-5">
+      <div class="row align-items-start">
+
+        <!-- search -->
+        <div class="col-3">
+          <div class="card rounded-4 border-0">
+
+            <div class="card-body bg-warning-subtle border border-2 border-warning rounded-4 justify-content-center">
+              <h6 class="card-title">Vai viajar?</h6>
+              <p class="card-text text-start">Procure aqui pela sua nova boleia!</p>
+
+              <form class="row row-cols-lg-auto g-0 justify-content-center ">
+
+                <div class="col-12 border-warning mb-3 justify-content-start text-start">
+                  <label class="mb-0 ms-1" for="partidaMunicipio">Ponto de partida:</label>
+                  <select class="form-control rounded-4 border border-warning" id="partidaMunicipio" name="partidaMunicipio" required [(ngModel)]="pesquisaForm.partidaMunicipio">
+                    <option value="" disabled selected><p>Escolher...</p></option>
+                    <option *ngFor="let municipio of municipiosFreguesias" [value]="municipio.nome" >
+                      {{ municipio.nome }}
+                    </option>
+                  </select>
+                </div>
+
+                <div class="col-12 border-warning mb-3 justify-content-start text-start">
+                  <label class="mb-0 ms-1" for="destinoMunicipio">Escolha o destino:</label>
+                  <select class="form-control rounded-4 border border-warning" id="destinoMunicipio" name="destinoMunicipio" required [(ngModel)]="pesquisaForm.destinoMunicipio">
+                    <option value="" disabled selected>Escolher...</option>
+                    <option *ngFor="let municipio of municipiosFreguesias" [value]="municipio.nome">
+                      {{ municipio.nome }}
+                    </option>
+                  </select>
+                </div>
+
+                <div class="col-12 border-warning mb-3 justify-content-start text-start">
+                  <label class="mb-0 ms-1" for="data">Data: </label>
+                  <input type="date" class="form-control rounded-4 border border-warning px-3 py-1" id="data" name="data" placeholder="Data" required [(ngModel)]="pesquisaForm.data">
+                </div>
+
+                <div class="col-12">
+                  <button type="submit" class="btn btn-warning rounded-5 mt-4" (click)="onSubmit()">Pesquisar</button>
+                </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- tabs -->
+
+        <div class="col">
+
+          <ul class="nav nav-pills mb-3 d-flex justify-content-between align-items-center" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link rounded-4 p-0 px-3 btn-dark text-decoration-none m-0 active" id="pills-todas-tab" data-bs-toggle="pill" data-bs-target="#pills-todas" type="button" role="tab" aria-controls="pills-todas" aria-selected="true">Minhas boleias</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link rounded-4 p-0 px-3 btn-dark text-decoration-none m-0" id="pills-ofertas-tab" data-bs-toggle="pill" data-bs-target="#pills-ofertas" type="button" role="tab" aria-controls="pills-ofertas" aria-selected="false">Minhas Ofertas</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link rounded-4 p-0 px-3 btn-dark text-decoration-none m-0" id="pills-BoleiasPorTerminar-tab" data-bs-toggle="pill" data-bs-target="#pills-BoleiasPorTerminar" type="button" role="tab" aria-controls="pills-BoleiasPorTerminar" aria-selected="false">Por Terminar</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link rounded-4 p-0 px-3 btn-dark text-decoration-none m-0" id="pills-avaliar-tab" data-bs-toggle="pill" data-bs-target="#pills-avaliar" type="button" role="tab" aria-controls="pills-avaliar" aria-selected="false">Por Avaliar</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link rounded-4 p-0 px-3 btn-dark text-decoration-none m-0" id="pills-passageiros-tab" data-bs-toggle="pill" data-bs-target="#pills-passageiros" type="button" role="tab" aria-controls="pills-passageiros" aria-selected="false">Candidaturas por aprovar</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link rounded-4 p-0 px-3 btn-dark text-decoration-none m-0" id="pills-minhasCandidaturasEspera-tab" data-bs-toggle="pill" data-bs-target="#pills-minhasCandidaturasEspera" type="button" role="tab" aria-controls="pills-minhasCandidaturasEspera" aria-selected="false">Candidaturas pendentes</button>
+            </li>
+          </ul>
+
+          <div class="tab-content" id="pills-tabContent">
+
+            <!-- minahs boleias todas -->
+            <div class="tab-pane fade show" id="pills-todas" role="tabpanel" aria-labelledby="pills-todasBoleias-tab">
+              <div class="card text-center rounded-4 mb-3 bg-light border-0" *ngFor="let listaBoleias of listaBoleias">
+                <div [ngClass]="{'border': listaBoleias.cancelada === true, 'border-light': listaBoleias.cancelada === true, 'border-danger': listaBoleias.cancelada === true, 'rounded-3': listaBoleias.cancelada === true, 'bg-danger-subtle': listaBoleias.cancelada === true, 'm-0': listaBoleias.cancelada === true, 'text-dark': listaBoleias.cancelada === true, 'mb-0': listaBoleias.cancelada === true}" class="card-header d-flex justify-content-between align-items-center  rounded-bottom rounded-4 p-0 border-0">
+
+                  <div class="col mb-0 d-flex justify-content-start text-dark">
+                    <p  class="mb-0 ml-"><i class="bi bi-calendar pb-0 mb-0 "></i> {{ listaBoleias.data | date:'short' }}</p>
+                  </div>
+                  <div class="col fw-bold mb-0 d-flex justify-content-start text-dark mb-0">
+                    <h6 class="mb-0">{{ listaBoleias.partida }} <i class="bi bi-arrow-right"></i> {{ listaBoleias.destino}} </h6>
+                  </div>
+                  
+                  <div class="col-6 p-2 mb-0">
+                    <h6>
+                      <i class="bi bi-car-front-fill"></i> {{ listaBoleias.carroObject?.marca }} ({{ listaBoleias.matricula}}) - Cor: {{ listaBoleias.cor }}
+                    </h6>
+                  </div>
+
+                  
+
+                </div>
+                <div class="card-body d-flex justify-content-center align-items-center p-2">
+
+                  <div class="col d-flex justify-content-start">
+                    <h6 class="col card-title m-0 p-0">Nome: <span class="fw-bold"> {{ listaBoleias.nome }} </span> <span class="fw-bold"> {{ listaBoleias.rating  | number : "1.1-2" }}<i style="color:gold;" class="bi bi-star-fill"></i> ({{listaBoleias.nAvaliacoes}}) </span></h6>
+                    <h6 class="col card-title m-0 p-0">Contacto: <span class="fw-bold"> {{ listaBoleias.telefone }} </span></h6>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- minhas ofertas todas -->
+            <div class="tab-pane fade show" id="pills-ofertas" role="tabpanel" aria-labelledby="pills-ofertas-tab">
+              <div class="card text-center rounded-4 mb-3 bg-light border-0" *ngFor="let ofertaBoleiaPendente of ofertasBoleiasPendentes">
+                <div class="card-header d-flex justify-content-between align-items-center bg-secondary-subtle rounded-bottom rounded-4 p-0 border-0">
+
+                  <div class="col-4 mb-0 d-flex justify-content-start text-dark">
+                    <i class="bi bi-calendar"></i> {{ ofertaBoleiaPendente.data | date:'short' }}
+                  </div>
+                  <div class="col fw-bold mb-0 d-flex justify-content-start text-dark">
+                    <h6 class="mb-0">{{ ofertaBoleiaPendente.partidaMunicipio }} <i class="bi bi-arrow-right"></i> {{ ofertaBoleiaPendente.destinoMunicipio }} </h6>
+                  </div>
+                  <div class="col-3 p-2 mb-0">
+                    <h6 class="border border-light rounded-3 bg-warning-subtle-1 m-0 text-dark"><i class="bi bi-car-front-fill"></i> {{ ofertaBoleiaPendente.matricula }} </h6>
+                  </div>
+
+                </div>
+                <div class="card-body d-flex justify-content-center align-items-center p-2">
+
+                  <div class="col d-flex justify-content-start">
+                    <h6 class="card-title m-0 p-0">Condutor: <span class="fw-bold"> {{ ofertaBoleiaPendente.condutor }} </span></h6>
+                  </div>
+
+                  <div class="col d-flex justify-content-center">
+                    <h6 class="card-title m-0 p-0">Lugares: <span class="fw-bold"> {{ ofertaBoleiaPendente.lugares }} <i class="bi bi-people-fill"></i></span></h6>
+                  </div>
+
+                  <div class="col d-flex justify-content-end">
+                    <button type="button" class="bg-secondary-subtle border-secondary rounded-4" (click)="decidirCancelarOferta(ofertaBoleiaPendente._id)">Cancelar Oferta de Boleia</button>
+                  </div>
+                </div>
+                <div class="card-footer rounded-4 rounded-top m-0 p-0 d-flex justify-content-start row" For="let ofertaBoleiaPendente of ofertasBoleiasPendentes">
+                  <!-- <h6 class="card-title m-0 p-0"><i class="bi bi-people-fill"></i> Passageiros: <span class="fw-bold"> {{ ofertaBoleiaPendente.passageiros }} </span></h6> -->
+                  <div *ngFor="let passageiro of ofertaBoleiaPendente.passageiros">
+
+                    <div class="d-flex justify-content-between column m-1 gap-1 align-items-center border-bottom border-1 border-secondary-subtle">
+                      <h6 class="col m-1"><i class="bi bi-person-fill"></i> {{ passageiro.nome }}  </h6>
+                      <p class="col m-1"><i class="bi bi-star-fill text-secondary>"></i> {{ passageiro.rating  | number : "1.1-2" }}</p>
+                      <p class="col m-1"><i class="bi bi-telephone-fill"></i> {{passageiro.telefone}}</p>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- boleias por terminar -->
+
+            <div class="tab-pane fade" id="pills-BoleiasPorTerminar" role="tabpanel" aria-labelledby="pills-BoleiasPorTerminar-tab">
+              <div class="card text-center rounded-4 mb-3 bg-light" *ngFor="let boleia of boleiasPorTerminar">
+                <div class="card-header d-flex justify-content-between align-items-center bg-secondary-subtle rounded-bottom rounded-4 p-0 border-0">
+
+                  <div class="col-4 mb-0 d-flex justify-content-start text-dark">
+                    <i class="bi bi-calendar me-2"></i> {{ boleia.data | date:'short' }}
+                  </div>
+
+                  <div class="col fw-bold mb-0 d-flex justify-content-start text-dark">
+                    <h6 class="mb-0">{{ boleia.partida }} <i class="bi bi-arrow-right"></i> {{boleia.destino}} </h6>
+                  </div>
+
+                  <div class="col-3 p-2 mb-0">
+                    <h6 class="border border- rounded-3 m-0 text-dark"> Por terminar </h6>
+                  </div>
+
+                </div>
+
+                <div class="card-body d-flex justify-content-between align-items-center p-2">
+
+                  <div class="col d-flex justify-content-start">
+                    <h6 class="card-title mb-0">Nome: <span class="fw-bold"> {{ boleia.passageiroNome || boleia.condutorNome }} </span></h6>
+                  </div>
+
+                  <div class="col d-flex justify-content-start">
+                    <h6 class="card-title mb-0">Avaliação: <span class="fw-bold"><i class="bi bi-star-fill text-warning"></i></span> (Por avaliar)</h6>
+                  </div>
+
+                  <div class="col-2 d-flex align-items-center justify-content-end m-0 gap-2" *ngIf="!boleia.condutorNome">
+                    <button class="btn btn-dark btn-sm rounded-5 m-0 p-0 col" (click)="terminarBoleia(boleia.id)">Terminar</button>
+                  </div>
+
+                  <ng-template #noBoleiasPorTerminar>
+                    <p>Não há boleias por terminar no momento.</p>
+                  </ng-template>
+
+                </div>
+              </div>
+
+            </div>
+
+            <!-- boleias por avaliar -->
+            <div class="tab-pane fade" id="pills-avaliar" role="tabpanel" aria-labelledby="pills-avaliar-tab">
+              <div class="card text-center rounded-4 mb-3" *ngFor="let boleia of boleiasTerminadasPorAvaliar">
+
+                <div class="card-header d-flex justify-content-between align-items-center bg-warning rounded-bottom rounded-4 p-0 border-0">
+
+                  <div class="col-4 mb-0 d-flex justify-content-start text-dark">
+                    <p class="m-0 p-0"><i class="bi bi-calendar me-2"></i> {{ boleia.data | date:'short' }}</p>
+                  </div>
+
+                  <div class="col fw-bold mb-0 d-flex justify-content-start text-dark">
+                    <h6 class="mb-0">{{ boleia.partida }} <i class="bi bi-arrow-right"></i> {{boleia.destino}} </h6>
+                  </div>
+
+                  <div class="col-3 p-2 mb-0">
+                    <h6 class="rounded-3 m-0 text-dark"> Por avaliar </h6>
+                  </div>
+
+                </div>
+
+                <div class="card-body d-flex justify-content-between align-items-center p-2">
+
+                  <div class="col-4 d-flex justify-content-start">
+                    <h6 class="card-title m-0 p-0">Nome: <span class="fw-bold"> {{ boleia.nomePorAvaliar }} </span></h6>
+                  </div>
+
+                  <div class="col d-flex justify-content-start">
+                    <p class="card-title m-0 p-0"><em>Por avaliar... </em><i class="bi bi-star-fill text-secondary>"></i></p>
+                  </div>
+
+                  <div class="col d-flex align-items-center justify-content-end m-0 gap-2">
+                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                      <label for="avaliacao"></label>
+                      <select class="btn btn-warning bg-warning-subtle rounded-end rounded-5 p-0 px-2" id="avaliacao" [(ngModel)]="avaliacao">
+                        <option value="5">5 estrelas </option>
+                        <option value="4">4 estrelas </option>
+                        <option value="3">3 estrelas </option>
+                        <option value="2">2 estrelas </option>
+                        <option value="1">1 estrela </option>
+                      </select>
+                      <button class="btn btn-warning rounded-start rounded-5 p-0 px-2" (click)="avaliarBoleia(boleia.id, avaliacao)">Avaliar</button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- passageiros por aprovar -->
+            <div class="tab-pane fade" id="pills-passageiros" role="tabpanel" aria-labelledby="pills-passageiros-tab">
+              <div class="card text-center rounded-4 mb-3 bg-light border-0" *ngFor="let candidaturaPendenteCondutor of candidaturasPendentesParaCondutor">
+
+                <div class="card-header d-flex justify-content-between align-items-center bg-secondary-subtle rounded-bottom rounded-4 p-0 border-0">
+
+                  <div class="col-4 mb-0 d-flex justify-content-start text-dark">
+                    <i class="bi bi-calendar me-2"></i> {{ candidaturaPendenteCondutor.data | date:'short' }}
+                  </div>
+
+                  <div class="col fw-bold mb-0 d-flex justify-content-start text-dark">
+                    <h6 class="mb-0">{{ candidaturaPendenteCondutor.partida }} <i class="bi bi-arrow-right"></i> {{ candidaturaPendenteCondutor.destino }} </h6>
+                  </div>
+
+                  <div class="col-3 p-2 mb-0">
+                    <h6 class="border border- rounded-3 bg-warning-subtle-1 m-0 text-dark"> Estado: {{ candidaturaPendenteCondutor.estado }} </h6>
+                  </div>
+
+                </div>
+
+                <div class="card-body d-flex justify-content-between align-items-center p-2">
+
+                  <div class="col-3 d-flex justify-content-start">
+                    <h6 class="card-title m-0 p-0">Passageiro: <span class="fw-bold"> {{ candidaturaPendenteCondutor.nomePass }} </span></h6>
+                  </div>
+
+                  <div class="col d-flex justify-content-start">
+                    <h6 class="card-title m-0 p-0">User rating: <span class="fw-bold"> {{ candidaturaPendenteCondutor.ratingPass | number : "1.1-2" }} <i class="bi bi-star-fill text-warning"></i></span> ({{ candidaturaPendenteCondutor.nAvaliacoesPass }})</h6>
+                  </div>
+
+                  <div class="col-3 d-flex align-items-center justify-content-end m-0 gap-2">
+                    <button class="btn btn-warning btn-sm rounded-5 m-0 p-0 col" (click)="decidirCandidatura(candidaturaPendenteCondutor.id, 'aprovada')">Aceitar</button>
+                    <button class="btn btn-dark btn-sm rounded-5 m-0 p-0 col"    (click)="decidirCandidatura(candidaturaPendenteCondutor.id, 'rejeitada')">Recusar</button>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- candidaturas pendentes -->
+            <div class="tab-pane fade" id="pills-minhasCandidaturasEspera" role="tabpanel" aria-labelledby="pills-minhasCandidaturasEspera-tab">
+              <div class="card text-center rounded-4 mb-3 bg-light" *ngFor="let candidaturaPendente of getCandidaturasArray()">
+
+                <div   [ngClass]="{'bg-danger-subtle': candidaturaPendente.estado === 'rejeitada'}" class="card-header d-flex justify-content-between align-items-center  rounded-bottom rounded-4 p-0 border-0" >
+
+                  <div class="col-3 mb-0 d-flex justify-content-start text-dark">
+                    <i class="bi bi-calendar me-2"></i> {{ candidaturaPendente.data | date:'short' }}
+                  </div>
+
+                  <div class="col fw-bold mb-0 d-flex justify-content-start text-dark">
+                    <h6 class="mb-0">{{ candidaturaPendente.partida }} <i class="bi bi-arrow-right"></i> {{ candidaturaPendente.destino }} </h6>
+                  </div>
+
+                  <div class="col p-2 mb-0">
+                    <h6 class=" rounded-5 p-0 m-0 text-dark"> O seu pedido encontra-se {{ candidaturaPendente.estado }} </h6>
+                  </div>
+
+                </div>
+
+                <div class="card-body d-flex justify-content-between align-items-center">
+
+                  <div class="col-3 d-flex justify-content-start p-0 m-0">
+                    <h6 class="card-title m-0 p-0">Condutor: <span class="fw-bold"> {{ candidaturaPendente.nomeCond }} </span></h6>
+                  </div>
+
+                  <div class="col d-flex justify-content-start p-0 m-0">
+                    <h6 class="card-title m-0 p-0">Avaliação: <span class="fw-bold">{{ candidaturaPendente.ratingCond | number : "1.1-2" }} <i class="bi bi-star-fill text-warning"></i></span></h6>
+                  </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

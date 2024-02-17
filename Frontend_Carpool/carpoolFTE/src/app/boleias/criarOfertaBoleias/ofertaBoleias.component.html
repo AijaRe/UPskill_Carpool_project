@@ -1,0 +1,109 @@
+<div class="container d-flex justify-content-between align-items-center mt-5">
+  <div class="col">
+    <div class="card border-0 m-5" style="position: relative; background-color: white">
+      <img src="./../../../assets/Pictures/8753.jpg" class="card-img" alt="..." style="width: 100%;">
+      <div class="text-center">
+        <p class="display-5 text-Secondary">Conduz, poupa e partilha a viagem!</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col mb-5">
+    <form [formGroup]="ofertaBoleiaForm" (ngSubmit)="onSubmit()">
+      <div class="card mt-5">
+        <h5 class="card-header bg-warning p-3">Crie a sua boleia</h5>
+        <div class="card-body">
+
+          <h5 class="mb-3">Local e Data de Partida</h5>
+          <div class="mb-3">
+            <label for="partidaMunicipio">Partida Município:</label>
+            <select id="partidaMunicipio" class="form-control form-select rounded-5" formControlName="partidaMunicipio" [(ngModel)]="municipioEscolhidoOrigem" (change)="freguesiaParaMunicipioOrigem()">
+              <option *ngFor="let opcaoMunicipio of municipiosFreguesias" [value]="opcaoMunicipio.nome">
+                {{ opcaoMunicipio.nome }}
+              </option>
+            </select>
+
+            <!-- Exibir Partida Freguesia apenas se um município de partida for escolhido -->
+            <div *ngIf="municipioEscolhidoOrigem">
+              <label for="partidaFreguesia">Partida Freguesia:</label>
+              <select id="partidaFreguesia" class="form-control form-select rounded-5" formControlName="partidaFreguesia">
+                <option *ngFor="let opcaoFreguesia of freguesiasOrigem" [value]="opcaoFreguesia">
+                  {{ opcaoFreguesia }}
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form mb-2 mx-0 d-flex align-items-center justify-content-center">
+            <div class="form mb-2 d-flex align-items-center justify-content-between">
+              <div class="col mx-0">
+                <label for="floatingData" class="form-label">Data:</label>
+                <input class="form-control rounded-5" type="datetime-local" id="floatingData" formControlName="data" placeholder="Qual a data da sua viagem" name="data"  required>
+              </div>
+              <div class="col col-4">
+                <label for="floatingLugares" class="form-label">Lugares:</label>
+                <input class="form-control rounded-5" type="text" id="floatingLugares" formControlName="lugares">
+              </div>
+            </div>
+          </div>
+
+          <hr class="border border-1 border-dark">
+
+          <h5 class="mb-3">Ponto de chegada</h5>
+          <div class="mb-3">
+            <label for="destinoMunicipio">Destino Município:</label>
+            <select id="destinoMunicipio" class="form-select rounded-5" formControlName="destinoMunicipio" [(ngModel)]="municipioEscolhidoDestino" (change)="freguesiaParaMunicipioDestino()">
+              <option *ngFor="let opcaoMunicipio of municipiosFreguesias" [value]="opcaoMunicipio.nome">
+                {{ opcaoMunicipio.nome }}
+              </option>
+            </select>
+
+            <!-- Exibir Destino Freguesia apenas se um município de destino for escolhido -->
+            <div *ngIf="municipioEscolhidoDestino">
+              <label for="destinoFreguesia">Destino Freguesia:</label>
+              <select id="freguesiaDestino" class="form-select rounded-5" formControlName="destinoFreguesia">
+                <option *ngFor="let opcaoFreguesia of freguesiasDestino" [value]="opcaoFreguesia">
+                  {{ opcaoFreguesia }}
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <hr class="border border-1 border-dark">
+
+          <h5 class="mb-3">Detalhes da sua viatura</h5>
+          <div class="form-floating mb-2">
+            <select class="form-select rounded-5" id="floatingCarro" formControlName="carro" [(ngModel)]="carroEscolhido" name="carro" required>
+              <option value="" disabled selected>Selecione o seu carro (obrigatório)</option>
+              <option *ngFor="let carro of listaCarros" [ngValue]="carro">
+                {{ carro.marca }} - {{ carro.modelo }}
+              </option>
+            </select>
+            <label for="floatingCarro">Selecione o seu carro (obrigatório)</label>
+          </div>
+
+
+        <div class="form-floating mb-2">
+          <input class="form-control rounded-5" type="text" id="floatingMatricula" formControlName="matricula" placeholder="Escreva a matricula do seu carro" name="matricula"  required>
+          <label for="floatingMatricula">Matricula do carro <span class="text-body-secondary">(obrigatório)</span></label>
+        </div>
+
+        <!-- CRIAR CATEGORIAS DE COR PARA SER SO SELECIONADO? -->
+        <div class="form-floating mb-2">
+          <input class="form-control rounded-5" type="text" id="floatingCor" formControlName="cor" placeholder="Selecione a cor do seu carro" name="cor"  required>
+          <label for="floatingCor">Cor <span class="text-body-secondary"></span></label>
+        </div>
+
+        </div>
+
+        <div class="d-flex justify-content-center m-2">
+          <button  *ngIf="!isLoggedin()" (click)="enviarParaRegisto()" type="submit" class="btn btn-warning col-12 rounded-5 p-2 m-0 mb-2">Publicar boleia</button>
+        </div>
+
+        <div class="d-flex justify-content-center m-2">
+          <button  *ngIf="isLoggedin()" type="submit" class="btn btn-warning col-12 rounded-5 p-2 m-0 mb-2">Publicar boleia</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

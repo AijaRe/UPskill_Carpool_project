@@ -1,0 +1,64 @@
+<div class="container d-flex justify-content-between align-items-center mt-5 border-0">
+  <div class="col border-0">
+    <div class="border-0">
+      <img src="./../../../assets/Pictures/fotoPerfil.jpg" class="card-img border-0 mt-5" alt="..." style="width: 100%;">
+      <div class="text-center">
+        <p class="display-5 text-Secondary">Escolhe a viagem e vai acompanhado!</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-8 mb-5">
+    <div class="card text-center rounded-4 mb-3 bg-light border-0" *ngFor="let oferta of resultadosPesquisa">
+      <div class="card-header d-flex justify-content-center align-items-center bg-warning rounded-bottom rounded-4 p-0 border-0">
+
+        <div class="col mb-0 d-flex justify-content-center text-dark py-2">
+          <i class="bi bi-calendar"></i> {{ oferta.data | date:'short' }}
+        </div>
+        <div class="col fw-bold m-0 d-flex justify-content-start text-dark">
+          <h6 class="m-0">{{ oferta.partidaMunicipio }} <i class="bi bi-arrow-right"></i> {{ oferta.destinoMunicipio }}</h6>
+        </div>
+        <div class="col-3 m-0">
+          <h6 class="m-0 text-dark"><i class="bi bi-car-front-fill"></i> {{ getCarDetails(oferta.carro)?.marca }}</h6>
+        </div>
+
+      </div>
+      <div class="card-body d-flex row p-2">
+        <div class="d-flex align-items-center m-2">
+          <div class="d-flex justify-content-start">
+            <h6 class="card-title m-0 p-0">Partida: <span class="fw-bold"> {{ oferta.partidaMunicipio }}, {{oferta.partidaFreguesia}} </span></h6>
+          </div>
+        </div>
+        <div class="d-flex align-items-center">
+          <div class="d-flex justify-content-start m-2">
+            <h6 class="card-title m-0 p-0">Destino: <span class="fw-bold">  {{ oferta.destinoMunicipio }}, {{oferta.destinoFreguesia}} </span></h6>
+          </div>
+        </div>
+        <div class="d-flex align-items-center">
+          <div class="d-flex justify-content-start m-2">
+            <h6 class="card-title m-0 p-0">Condutor: <span class="fw-bold"> {{ oferta.nome }} - <i class="bi bi-star-fill text-warning"></i> {{ oferta.rating  | number : "1.1-2" }} ({{ oferta.nAvaliacoes }}) </span></h6>
+          </div>
+        </div>
+
+
+
+        <div class="d-flex align-items-center m-2 justify-content-between">
+
+          <div class="d-flex justify-content-center">
+            <h6 class="card-title m-0 p-0 me-3"> Carro: <span class="fw-bold"> <i class="bi bi-car-front-fill"></i> {{ getCarDetails(oferta.carro)?.marca }} <span class="fw-italic"></span> {{ getCarDetails(oferta.carro)?.modelo }} </span></h6>
+          </div>
+
+          <div class="d-flex justify-content-center col">
+            <h6 class="card-title m-0 p-0 me-3"> Lugares: <span class="fw-bold"> {{ oferta.lugares }} <i class="bi bi-people-fill"></i></span></h6>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-2">
+        <button class="btn btn-warning rounded-4 col-6" (click)="candidatar(oferta.id)">Candidatar-se a um lugar</button>
+      </div>
+
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+  carros-api:
+    container_name: carros-api
+    build:
+      context: ../../API_Carros
+    env_file:
+      - ../../API_Carros/.env
+    ports:
+      - "3030:3030"
+
+  carpool-api:
+    container_name: carpool-api
+    build:
+      context: ../../API_Carpool
+    env_file:
+      - ../../API_Carpool/.env
+    ports:
+      - "3000:3000"
+    depends_on:
+      - carros-api
+
+  carpool-fe:
+    container_name: carpool-fe
+    build:
+      context: ./
+    ports:
+      - "4200:4200"
+    depends_on:
+      - carpool-api

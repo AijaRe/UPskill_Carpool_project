@@ -1,0 +1,39 @@
+<div>
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-floating mb-3">
+      <input class="form-control rounded-5" required type="email" [(ngModel)]="email" name="email" id="floatingInput" placeholder="Email">
+      <label for="floatingInput">Email address</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input class="form-control rounded-5" type="password" [(ngModel)]="password" name="password" id="floatingPassword" placeholder="Password" required>
+      <label for="floatingPassword">Password</label>
+    </div>
+    <div class="d-flex flex-wrap flex-column justify-content-center">
+      <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-warning rounded-5 col-12" data-bs-dismiss="modal">Login</button>
+      </div>
+      <hr class="my-3">
+      <div class="d-flex justify-content-center mb-0 register-link">
+        <span>Ainda não tem conta? <a class="text-warning" routerLink="/registo" data-bs-dismiss="modal">Criar conta</a></span>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<!--   <div class="login-modal">
+    <h1>Bem vindo de volta</h1>
+    <form (ngSubmit)="onSubmit()">
+      <label for="email">Email</label>
+      <input class="form-control" required type="email" [(ngModel)]="email" name="email" placeholder="Email">
+
+      <label for="password">Password</label>
+      <input class="form-control" type="password" [(ngModel)]="password" name="password" placeholder="Password" required>
+
+      <button type="submit" class="btn btn-primary">Login</button>
+
+      <div class="register-link">
+        <span>Ainda não tem conta? <a routerLink="/registo">Criar conta</a></span>
+      </div>
+    </form>
+  </div> -->

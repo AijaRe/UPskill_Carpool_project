@@ -1,0 +1,50 @@
+<div class="mt-5">
+	...
+</div>
+<!-- ver-todas-ofertas.component.html -->
+<div class="component-container m-3 mb-5">
+<div class="card text-center m-1 rounded-4" *ngFor="let oferta of ofertasBoleia">
+  <div class="card-header d-flex justify-content-between align-items-center bg-warning-subtle rounded-4 p-0 border border-2 border-warning">
+    <div class="col-4 mb-0 d-flex justify-content-start text-dark">
+      <p class="m-0 p-0"><i class="bi bi-calendar"></i> {{ oferta.data | date:'short' }}</p>
+    </div>
+
+    <div class="col fw-bold mb-0 d-flex justify-content-start text-dark">
+      <h6 class="mb-0">{{ oferta.partidaMunicipio }} <i class="bi bi-arrow-right"></i> {{ oferta.destinoMunicipio }} </h6>
+    </div>
+
+    <div class="col-3 p-2 mb-0">
+      <h6 class="border border-warning rounded-3 bg-warning-subtle-1 m-0 text-dark" (click)="toggleDetails(oferta)">
+        Mais detalhes <i class="bi bi-chevron-down"></i>
+      </h6>
+    </div>
+  </div>
+
+  <div *ngIf="oferta.showDetails" class="card-body">
+    <!-- Display more details when clicked -->
+    <div class="mb-2">
+      <span>Partida: {{ oferta.partidaMunicipio }} - {{oferta.partidaFreguesia}}</span>
+    </div>
+	 <div class="mb-2">
+      <span>Destino: {{ oferta.destinoMunicipio }} - {{oferta.destinoFreguesia}}</span>
+    </div>
+    <div class="mb-2">
+      <span>Carro:  {{ (getCarDetails(oferta.carro) | async)?.marca }} - {{ (getCarDetails(oferta.carro) | async)?.modelo }}</span>
+    </div>
+    <div class="mb-2">
+      <span>Nome condutor: {{ oferta.nome }}</span>
+    </div>
+	<div class="mb-2">
+	  <span>Lugares disponíveis: {{ oferta.lugares }}</span>
+	</div>
+    <div class="mb-2">
+      <span>Rating:
+		 <span class="bi bi-star-fill text-warning"></span>
+		 {{ oferta.rating | number : "1.1-2" }} ({{ oferta.nAvaliacoes }})</span>
+    </div>
+	<div *ngIf="isLoggedIn()">
+        <button class="btn btn-warning rounded-5" (click)="candidatar(oferta.id)">Candidatar-se a um lugar</button>
+    </div>
+  </div>
+</div>
+</div>
