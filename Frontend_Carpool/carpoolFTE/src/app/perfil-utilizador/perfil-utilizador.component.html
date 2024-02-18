@@ -1,11 +1,13 @@
-<div class="container" style="margin-top: 100px;">
-
+<div class="container" style="margin-top: 100px">
   <div class="d-flex justify-content-center column align-items-center">
-
     <div class="d-flex align-items-center col">
-
       <div class="row col-6">
-        <img src="./../../assets/Pictures/Happy passenger looking out of roof of car with hands up.jpg" class="cardi-img border-0 mt-5" alt="..." style="width: 100%;">
+        <img
+          src="./../../assets/Pictures/Happy passenger looking out of roof of car with hands up.jpg"
+          class="cardi-img border-0 mt-5"
+          alt="..."
+          style="width: 100%"
+        />
       </div>
 
       <div class="col">
@@ -14,64 +16,128 @@
             <h4 class="card-title fs-bold">{{ perfilUtilizador.nome }}</h4>
           </div>
           <div class="card-body bg-light">
-            <p class="card-text mb-1">Email:<strong> {{ perfilUtilizador.email }} </strong></p>
-            <p class="card-text mb-1">Telefone:<strong> {{ perfilUtilizador.telefone }} </strong></p>
-            <p class="card-text mb-1">Telefone:<strong>  {{ perfilUtilizador.rating | number : "1.1-2" }} <i class="bi bi-star-fill text-warning"></i> ({{ perfilUtilizador.nAvaliacoes }}) </strong></p>
+            <p class="card-text mb-1">
+              Email:<strong> {{ perfilUtilizador.email }} </strong>
+            </p>
+            <p class="card-text mb-1">
+              Telefone:<strong> {{ perfilUtilizador.telefone }} </strong>
+            </p>
+            <p class="card-text mb-1">
+              Rating:<strong>
+                {{ perfilUtilizador.rating | number : "1.1-2" }}
+                <i class="bi bi-star-fill text-warning"></i> ({{
+                  perfilUtilizador.nAvaliacoes
+                }})
+              </strong>
+            </p>
           </div>
           <div class="card-footer">
             <div class="d-flex justify-content-center gap-1">
               <div class="d-flex row">
-
                 <div class="row mt-2">
-
-                  <button class="btn btn-warning rounded-5" (click)="togglePasswordFields()">
+                  <button
+                    class="btn btn-warning rounded-5"
+                    (click)="togglePasswordFields()"
+                  >
                     Mudar a minha senha
                   </button>
 
-                  <form *ngIf="showPasswordFields" [formGroup]="passwordForm" (submit)="changePassword()">
+                  <form
+                    *ngIf="showPasswordFields"
+                    [formGroup]="passwordForm"
+                    (submit)="changePassword()"
+                  >
                     <div class="form-group">
                       <label class="form-label text-dark">
                         Senha atual:
-                        <input type="password" formControlName="CurrentPassword" class="form-control" required />
+                        <input
+                          type="password"
+                          formControlName="CurrentPassword"
+                          class="form-control"
+                          required
+                        />
                       </label>
                       <br />
                       <label class="form-label text-dark">
                         Nova senha:
-                        <input type="password" formControlName="NewPassword" class="form-control" required />
+                        <input
+                          type="password"
+                          formControlName="NewPassword"
+                          class="form-control"
+                          required
+                        />
                       </label>
                       <br />
                       <label class="form-label text-dark">
                         Confirma a nova senha:
-                        <input type="password" formControlName="NewPasswordConfirm" class="form-control" required />
+                        <input
+                          type="password"
+                          formControlName="NewPasswordConfirm"
+                          class="form-control"
+                          required
+                        />
                       </label>
                       <br />
                     </div>
 
-                    <button type="submit" [disabled]="passwordForm.invalid" class="btn btn-warning rounded-5 btn-submit">
+                    <button
+                      type="submit"
+                      [disabled]="passwordForm.invalid"
+                      class="btn btn-warning rounded-5 btn-submit"
+                    >
                       Mudar a senha
                     </button>
                   </form>
                 </div>
 
-
                 <div class="row border-top border-1 p-2 mt-2">
-                  <button type="button" class="btn btn-secondary rounded-5" data-toggle="modal" data-target="#deleteProfileModal">
+                  <button
+                    type="button"
+                    class="btn btn-secondary rounded-5"
+                    data-toggle="modal"
+                    data-target="#deleteProfileModal"
+                  >
                     Apagar o meu perfil
                   </button>
                   <!-- Modal for confirmation -->
-                  <div class="modal" id="deleteProfileModal" tabindex="-1" role="dialog">
+                  <div
+                    class="modal"
+                    id="deleteProfileModal"
+                    tabindex="-1"
+                    role="dialog"
+                  >
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
                           <h5 class="modal-title">Eliminar perfil</h5>
-                          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                          <button
+                            type="button"
+                            class="btn-close"
+                            data-dismiss="modal"
+                            aria-label="Close"
+                          ></button>
                         </div>
                         <div class="modal-body">
-                          <p>Tem a certeza que deseja apagar permanentemente o seu perfil?</p>
+                          <p>
+                            Tem a certeza que deseja apagar permanentemente o
+                            seu perfil?
+                          </p>
                         </div>
                         <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-                          <button type="button" class="btn btn-danger" (click)="deleteProfile()">Sim</button>
+                          <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-dismiss="modal"
+                          >
+                            Não
+                          </button>
+                          <button
+                            type="button"
+                            class="btn btn-danger"
+                            (click)="deleteProfile()"
+                          >
+                            Sim
+                          </button>
                         </div>
                       </div>
                     </div>
@@ -82,71 +148,94 @@
           </div>
         </div>
       </div>
-
-
-
     </div>
   </div>
 </div>
 
 <div class="p-3">
-    <h3 class="ms-5 ">Historico de boleias</h3>
-    <div class="row">
+  <h3 class="ms-5">Historico de boleias</h3>
+  <div class="row">
     <div *ngFor="let boleia of ofertaBoleiasPassadas" class="col col-lg-4">
       <div class="cardi green">
         <div class="additional">
           <div class="user-cardi">
             <div class="level center">
-              {{perfilUtilizador?.nome}}
+              {{ perfilUtilizador?.nome }}
             </div>
-            <div class="points center"> <img class="centerStar" src="../../assets/Pictures/stars.png" style="width: 30px; height: auto;"><br>
-              {{perfilUtilizador?.rating | number : "1.1-2"}}
+            <div class="points center">
+              <img
+                class="centerStar"
+                src="../../assets/Pictures/stars.png"
+                style="width: 30px; height: auto"
+              /><br />
+              {{ perfilUtilizador?.rating | number : "1.1-2" }}
             </div>
-            <svg width="110" height="110" viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc" class="center">
+            <svg
+              width="110"
+              height="110"
+              viewBox="0 0 250 250"
+              xmlns="http://www.w3.org/2000/svg"
+              role="img"
+              aria-labelledby="title desc"
+              class="center"
+            >
               <defs>
                 <clipPath id="scene">
-                  <circle cx="125" cy="125" r="115"/>
+                  <circle cx="125" cy="125" r="115" />
                 </clipPath>
               </defs>
               <circle cx="125" cy="125" r="120" fill="rgba(0,0,0,0.15)" />
               <g stroke="none" stroke-width="0" clip-path="url(#scene)">
                 <!-- Change the below code to include the image -->
-                <image xlink:href="../../assets/Pictures/carpoolIcon.png" x="25" y="45" width="210" height="210" clip-path="url(#scene)" />
+                <image
+                  xlink:href="../../assets/Pictures/carpoolIcon.png"
+                  x="25"
+                  y="45"
+                  width="210"
+                  height="210"
+                  clip-path="url(#scene)"
+                />
                 <!-- End of image substitution -->
               </g>
             </svg>
           </div>
           <div class="more-info margem_cardi">
-            <span><strong>Condutor:{{boleia.nomeCondutor}}</strong></span>
+            <span
+              ><strong>Condutor:{{ boleia.nomeCondutor }}</strong></span
+            >
             <div class="coords margem_cardi">
-              <span><strong>Passageiro:{{boleia.nomePassageiro}}</strong></span>
+              <span
+                ><strong>Passageiro:{{ boleia.nomePassageiro }}</strong></span
+              >
             </div>
             <div class="stats row">
               <div class="col-md-2">
                 <div class="title">Avaliação condutor</div>
                 <i class="fa fa-star"></i>
-                <div class="value">{{boleia.avaliacaoPassageiro}}</div>
+                <div class="value">{{ boleia.avaliacaoPassageiro }}</div>
               </div>
               <div class="col-md-2">
                 <div class="title">Carro da viagem</div>
                 <i class="fa fa-car"></i>
-                <div class="value">{{boleia.carroObject?.marca}}</div>
+                <div class="value">{{ boleia.carroObject?.marca }}</div>
               </div>
               <div class="col-md-2">
                 <div class="title">Avaliação passageiro</div>
                 <i class="fa fa-star"></i>
-                <div class="value">{{boleia.avaliacaoCondutor}}</div>
+                <div class="value">{{ boleia.avaliacaoCondutor }}</div>
               </div>
             </div>
           </div>
         </div>
-        <div class="general"><br>
-          <h6>A sua boleia no dia
-            <br>{{ boleia.data | date: 'dd/MM/yyyy' }}</h6>
-            <br>
-            <h6>Partiu de: {{boleia.partida}}</h6>
-            <br>
-            <h6>Em direção a {{boleia.destino}}</h6>
+        <div class="general">
+          <br />
+          <h6>
+            A sua boleia no dia <br />{{ boleia.data | date : "dd/MM/yyyy" }}
+          </h6>
+          <br />
+          <h6>Partiu de: {{ boleia.partida }}</h6>
+          <br />
+          <h6>Em direção a {{ boleia.destino }}</h6>
 
           <span class="more"></span>
         </div>
