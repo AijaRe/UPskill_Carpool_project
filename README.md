@@ -52,6 +52,8 @@ Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli
 
 Execute `ng serve` para iniciar o servidor de desenvolvimento. Navegue até `http://localhost:4200/`. A aplicação será recarregada automaticamente se houver alterações nos ficheiros de origem.
 
+Em alternativa pode executar `docker compose up` na pasta de frontend. 
+
 O projeto possui ambientes de teste e produção. Caso seja necessário, altere a URL das APIs externas em `src/environments`.
 
 ## Grupo de desenvolvimento
