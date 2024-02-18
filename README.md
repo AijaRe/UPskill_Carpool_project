@@ -1,5 +1,7 @@
 Raging Frogs Battle Against Typescript
+
 aka
+
 Rui Silva - Filipe Calça - Bernardo Dias - Aija Repsa - Tiago Silva
 
 # CarpoolFTE - Plataforma de Partilha de Viagens
@@ -34,6 +36,14 @@ Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli
 Execute `ng serve` para iniciar o servidor de desenvolvimento. Navegue até `http://localhost:4200/`. A aplicação será recarregada automaticamente se houver alterações nos ficheiros de origem.
 
 O projeto possui ambientes de teste e produção. Caso seja necessário, altere a URL das APIs externas em `src/environments`.
+
+## Grupo de desenvolvimento
+
+Todos os membros do grupo contribuíram em várias partes do projeto, conforme detalhado nas atas de trabalho. No entanto, para uma melhor organização, as tarefas foram distribuidas da seguinte forma:
+
+Frontend: Bernardo Dias e Rui Silva: 
+API Carpool: Aija Repsa e Tiago Silva
+API Carros: Filipe Calça
 
 ---
 
