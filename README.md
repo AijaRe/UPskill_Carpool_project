@@ -25,6 +25,21 @@ Os utilizadores podem realizar as seguintes ações:
 - Candidatar-se a um lugar numa partilha de viagem, sendo que o condutor pode aceitar ou rejeitar a candidatura.
 - Caso a candidatura seja aceite, esta transforma-se num evento de partilha de viagem, permitindo aos utilizadores avaliarem-se mutuamente.
 
+## Exemplos
+
+### Login e dashboard
+
+![login](https://github.com/AijaRe/UPskill_Carpool_project/blob/master/Documentacao/Videos/Carpool_login_dashboard.gif)
+
+### Perfil
+
+![perfil](https://github.com/AijaRe/UPskill_Carpool_project/blob/master/Documentacao/Videos/Carpool_perfil.gif)
+
+### Ofertas das boleias
+
+![boleias](https://github.com/AijaRe/UPskill_Carpool_project/blob/master/Documentacao/Videos/Carpool_oferta_boleia.gif)
+
+
 ## Segurança e Acesso
 
 O projeto implementa autenticação de utilizadores através de tokens e utiliza guardas de rota funcionais. Existem diferentes partes da aplicação visíveis para utilizadores não registados, utilizadores registados e administradores.
@@ -43,8 +58,10 @@ O projeto possui ambientes de teste e produção. Caso seja necessário, altere 
 
 Todos os membros do grupo contribuíram em várias partes do projeto, conforme detalhado nas atas de trabalho. No entanto, para uma melhor organização, as tarefas foram distribuidas da seguinte forma:
 
-Frontend: Bernardo Dias e Rui Silva: 
+Frontend: Bernardo Dias e Rui Silva
+
 API Carpool: Aija Repsa e Tiago Silva
+
 API Carros: Filipe Calça
 
 ---
