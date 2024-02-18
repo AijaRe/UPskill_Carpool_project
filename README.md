@@ -4,6 +4,8 @@ aka
 
 Rui Silva - Filipe Calça - Bernardo Dias - Aija Repsa - Tiago Silva
 
+Desenvolvido 18.01.2024 - 31.01.2024
+
 # CarpoolFTE - Plataforma de Partilha de Viagens
 
 ## Descrição do Projeto
